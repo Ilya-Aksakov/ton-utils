@@ -39,10 +39,16 @@ If you use functions that call Toncenter (`*ByJettonMaster`, traces, tx), you ca
 import type { APIOptions } from "toncenter-v3-api";
 
 const options: APIOptions = {
-  baseUrl: "https://toncenter.com/api/v3",
+  chain: "mainnet",
   apiKey: process.env.TONCENTER_API_KEY,
 };
 ```
+
+Notes:
+
+- **options**: optional; you may omit it entirely.
+- **apiKey**: optional; without an API key Toncenter enforces a rate limit of 1 request per second.
+- **chain**: defaults to "mainnet".
 
 ## Jetton utils
 
