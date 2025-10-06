@@ -1,0 +1,78 @@
+{
+  "name": "ton-utils",
+  "version": "0.1.0",
+  "description": "TON blockchain utilities",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "bun test",
+    "prepublishOnly": "npm run clean && npm run build && npm run lint"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ],
+    "dts": true,
+    "splitting": true,
+    "sourcemap": true,
+    "clean": true
+  },
+  "dependencies": {
+    "toncenter-v3-api": "^2.0.4"
+  },
+  "keywords": [
+    "ton",
+    "blockchain",
+    "utilities"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ilya-Aksakov/ton-utils.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "author": "Ilya Aksakov",
+  "homepage": "https://github.com/Ilya-Aksakov/ton-utils#readme",
+  "bugs": {
+    "url": "https://github.com/Ilya-Aksakov/ton-utils/issues"
+  },
+  "devDependencies": {
+    "@types/node": "^24.7.0",
+    "@eslint/js": "^9.12.0",
+    "eslint": "^9.12.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.3",
+    "typescript-eslint": "^8.8.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3"
+  }
+}
