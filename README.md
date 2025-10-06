@@ -1,4 +1,4 @@
-# ton-utils
+# ton-helper
 
 Small utility helpers for TON blockchain built on top of `toncenter-v3-api`.
 
@@ -9,7 +9,7 @@ Small utility helpers for TON blockchain built on top of `toncenter-v3-api`.
 ## Install
 
 ```bash
-npm install ton-utils
+npm install ton-helper
 ```
 
 ## Quick start
@@ -30,7 +30,7 @@ import {
   // common
   sleep,
   shortenAddress,
-} from "ton-utils";
+} from "ton-helper";
 ```
 
 If you use functions that call Toncenter (`*ByJettonMaster`, traces, tx), you can pass `APIOptions` (see `toncenter-v3-api` docs) to configure base URL and API key.
