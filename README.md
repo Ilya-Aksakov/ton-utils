@@ -66,6 +66,13 @@ const pretty = await formatUnitsByJettonMaster(123456789n, "EQ...master", option
 const onChain = await parseUnitsByJettonMaster("1.5", "EQ...master", options);
 ```
 
+Wallet-based helpers (resolve jetton master by wallet first):
+
+```ts
+const prettyW = await formatUnitsByJettonWallet(123456789n, "EQ...wallet", options);
+const onChainW = await parseUnitsByJettonWallet("1.5", "EQ...wallet", options);
+```
+
 ## Traces
 
 - `getTraceByTxHash({ txHash }, options?)`
@@ -105,7 +112,8 @@ shortenAddress("EQDx...abcd", 4, 4); // -> "EQDx...abcd"
   - `sleep(ms: number): Promise<void>`
   - `shortenAddress(address: string, charsBefore = 4, charsAfter = 4): string`
 - `jetton`
-  - `formatUnits`, `parseUnits`, `formatUnitsByJettonMaster`, `parseUnitsByJettonMaster`
+  - `formatUnits`, `parseUnits`, `formatUnitsByJettonMaster`, `parseUnitsByJettonMaster`,
+  - `formatUnitsByJettonWallet`, `parseUnitsByJettonWallet`
 - `traces`
   - `getTraceByTxHash`, `waitTraceByTxHash`
 - `tx`
