@@ -1,4 +1,6 @@
 import { getJettonMasters, type APIOptions } from "toncenter-v3-api";
+import { getJettonWallets } from "toncenter-v3-api";
+import { sleep } from "../common/utils";
 
 export const parseUnits = (value: string, decimals: number) => {
   if (!/^(-?)([0-9]*)\.?([0-9]*)$/.test(value))
@@ -53,4 +55,20 @@ export const parseUnitsByJettonMaster = async (
   } else {
     throw new Error("jetton master decimals not found");
   }
+};
+
+export const parseUnitsByJettonWallet = async (
+  value: number | string,
+  jettonWallet: string,
+  options?: APIOptions
+) => {
+  const res = await getJettonWallets({ address: [jettonWallet] }, options);
+  const master = res?.jetton_wallets?.[0]?.jetton as string | undefined;
+  if (!master) {
+    throw new Error("jetton master not found by wallet");
+  }
+  if (!options?.apiKey) {
+    await sleep(1000);
+  }
+  return parseUnitsByJettonMaster(value, master, options);
 };
