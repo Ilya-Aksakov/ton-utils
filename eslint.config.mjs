@@ -13,4 +13,12 @@ export default [
       "no-console": "warn",
     },
   },
+  {
+    files: ["tests/**/*.js"],
+    languageOptions: {
+      globals: {
+        process: "readonly",
+      },
+    },
+  },
 ];
